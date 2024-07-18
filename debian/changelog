@@ -1,5 +1,53 @@
-template-repository (1.0-1) unstable; urgency=medium
+python-rencode (1.0.6-2) unstable; urgency=medium
 
-  * Initial release
+  * Backported few upstream patches.
+  * Removed obsolete "python3-wheel" from Build-Depends.
+  * Standards-Version: 4.6.0.
+  * Rules-Requires-Root: no.
+  * watch: updated GitHub URL.
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Dmitry Smirnov <onlyjob@debian.org>  Thu, 02 Sep 2021 22:59:39 +1000
+
+python-rencode (1.0.6-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Build with full hardening.
+  * DH & compat to version 12.
+  * Standards-Version: 4.4.1.
+  * Removed "X-Python-Version".
+  * Vcs URLs to Salsa.
+  * Testsuite: autopkgtest-pkg-python.
+  * Build-Depends:
+    + python3-setuptools
+    + python3-wheel
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 04 Dec 2019 10:04:36 +1100
+
+python-rencode (1.0.5-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Drop Python 2 support (Closes: #938129).
+
+ -- Ondřej Nový <onovy@debian.org>  Sun, 27 Oct 2019 19:56:53 +0100
+
+python-rencode (1.0.5-1) unstable; urgency=medium
+
+  * New upstream release [June 2016].
+  * Standards-Version: 3.9.8.
+  * Vcs-Git URL to HTTPS.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Sat, 06 Aug 2016 16:01:16 +1000
+
+python-rencode (1.0.4-1) unstable; urgency=medium
+
+  * New upstream release [February 2016].
+  * Vcs-Browser URL to https.
+  * Standards-Version: 3.9.7.
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Tue, 22 Mar 2016 10:20:12 +1100
+
+python-rencode (1.0.3-1) unstable; urgency=low
+
+  * Initial release (Closes: #788918).
+
+ -- Dmitry Smirnov <onlyjob@debian.org>  Wed, 17 Jun 2015 10:29:33 +1000

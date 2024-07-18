@@ -1,0 +1,5 @@
+# uscan(1) configuration file.
+version=3
+
+ https://github.com/aresch/rencode/releases \
+ .*/archive/refs/tags/v?(\d[-\d\.]+)\.tar\.gz

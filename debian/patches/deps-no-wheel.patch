@@ -1,0 +1,15 @@
+Origin: upstream, https://github.com/aresch/rencode/commit/16e61e1ff4294bddb7c881536d3d454355c78969
+From: Louis Sautier <sautier.louis@gmail.com>
+Date: Sun, 8 Aug 2021 23:38:04 +0200
+Subject: [PATCH] Remove unnecessary wheel dependency (#30)
+
+--- a/setup.py
++++ b/setup.py
+@@ -91,6 +91,6 @@
+   author_email="andrewresch@gmail.com",
+   url="https://github.com/aresch/rencode",
+   cmdclass={'build_ext': optional_build_ext},
+   ext_modules=ext_modules,
+-  setup_requires=['setuptools', 'wheel'],
++  setup_requires=['setuptools'],
+ )
