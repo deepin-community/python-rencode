@@ -1,0 +1,40 @@
+Origin: upstream, https://github.com/aresch/rencode/commit/572ff74586d9b1daab904c6f7f7009ce0143bb75
+From: Andrew Resch <andrewresch@gmail.com>
+Date: Mon, 9 Aug 2021 20:44:51 -0700
+Subject: [PATCH] Fix checking if typecode is valid while decoding.
+
+ This bug will cause rencode to hang if the invalid typecode is included
+ in a sequence type (list, dict) since the position will not change and
+ the loop checking for the termination byte never returns.
+
+ This change is a copy of PR #29 with a few aesthetic changes.
+
+--- a/rencode/rencode.pyx
++++ b/rencode/rencode.pyx
+@@ -526,8 +526,10 @@
+     elif DICT_FIXED_START <= typecode < DICT_FIXED_START + DICT_FIXED_COUNT:
+         return decode_fixed_dict(data, pos)
+     elif typecode == CHR_DICT:
+         return decode_dict(data, pos)
++    else:
++        raise ValueError("Invalid typecode: %d at pos: %d" % (typecode, pos[0]))
+ 
+ def loads(data, decode_utf8=False):
+     """
+     Decodes the string into an object
+--- a/tests/test_rencode.py
++++ b/tests/test_rencode.py
+@@ -39,8 +39,13 @@
+     unicode = str
+     def u(x):
+         return x
+ 
++    def test_invalid_typecode(self):
++        s = b";\x2f\x7f"
++        with self.assertRaises(ValueError):
++            rencode.loads(s)
++
+ 
+ class TestRencode(unittest.TestCase):
+     def test_encode_fixed_pos_int(self):
+         self.assertEqual(rencode.dumps(1), rencode_orig.dumps(1))
